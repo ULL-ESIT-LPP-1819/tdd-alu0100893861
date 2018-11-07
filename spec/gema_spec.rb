@@ -15,6 +15,9 @@ RSpec.describe Gema do
 			it "Debe existir la cantidad de hidratos de carbono" do
 				expect(30).to eq(p.hidratos)
 			end
+			it "Debe existir la cantidad de grasas saturadas" do
+				expect(2).to eq(p.saturadas)
+			end
 		end
 	end
 end
