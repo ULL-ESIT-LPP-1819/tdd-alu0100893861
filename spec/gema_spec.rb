@@ -4,7 +4,7 @@ RSpec.describe Gema do
   end
 
 	describe Etiqueta do
-	   	p = Etiqueta.new()
+	   	p = Etiqueta.new("galleta")
 		context "Caracteristicas de alimentos" do 
 			it "Debe existir un nombre para la etiqueta" do
 		  		 expect("galleta").to eq(p.nombre)
