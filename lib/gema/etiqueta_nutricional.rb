@@ -1,6 +1,7 @@
 class Etiqueta
-	attr_reader :nombre
-	def initialize(nombre)
+	attr_reader :nombre, :grasa
+	def initialize(nombre,grasa)
 		@nombre=nombre
+		@grasa=grasa
 	end
 end
