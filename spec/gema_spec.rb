@@ -21,6 +21,9 @@ RSpec.describe Gema do
 			it "Debe existir la cantidad de proteinas" do
 				expect(50).to eq(p.proteinas)
 			end
+			it "Debe existir la cantidad de sal" do
+				expect(25).to eq(p.azucares)
+			end
 		end
 	end
 end
