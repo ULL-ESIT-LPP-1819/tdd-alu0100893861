@@ -28,13 +28,17 @@ RSpec.describe Gema do
 				expect(0.83).to eq(p.sal)
 			end
 			it "Existe la cantidad de porciones" do
-				expect(6.1).to eq(p.porcion)
+				expect(0.061).to eq(p.porcion)
 			end
 		end
 		context "Existencia de Métodos" do
 			it "Debe existir un metodo para calcular el valor nutricional" do
 				expect(1847.45).to eq(p.valor_energetico[0])
 				expect(437.88).to eq(p.valor_energetico[1])
+			end
+			it "Debe existir un metodo para calcular el valor por porciones" do
+				expect(256.06).to eq(p.valor_porcion[0].round(2))
+				expect(60.54).to eq(p.valor_porcion[1].round(2))
 			end	
 		end
 	end
