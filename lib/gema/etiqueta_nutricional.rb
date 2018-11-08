@@ -12,6 +12,7 @@ class Etiqueta
 		@valor_energetico=[v_energeticokJ,v_energeticokc]
 		@porcion=porcion/100
 		@valor_porcion=[porcion_kJ,porcion_kc]
+		@IR=[8400,2000,70,20,260,50,90,6]
 	end
 	def v_energeticokJ
 		(37.0*@grasa)+(17.0*@hidratos)+(17.0*@proteinas)+(25*@sal)
@@ -20,9 +21,9 @@ class Etiqueta
 		(9.0*@grasa)+(4.0*@hidratos)+(4.0*@proteinas)+(6*@sal)
 	end
 	def porcion_kJ
-		(37*(@porcion*@grasa))+(17*(@porcion*@hidratos))+(17*(@porcion+@proteinas))+(25*(@porcion+@sal))
+		v_energeticokJ*@porcion
 	end
 	def porcion_kc
-		(9.0*(@porcion*@grasa))+(4.0*(@porcion*@hidratos))+(4.0*(@porcion+@proteinas))+(6*(@porcion+@sal))
+		v_energeticokc*@porcion
 	end
 end

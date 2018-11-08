@@ -37,8 +37,11 @@ RSpec.describe Gema do
 				expect(437.88).to eq(p.valor_energetico[1])
 			end
 			it "Debe existir un metodo para calcular el valor por porciones" do
-				expect(256.06).to eq(p.valor_porcion[0].round(2))
-				expect(60.54).to eq(p.valor_porcion[1].round(2))
+				expect(112.69).to eq(p.valor_porcion[0].round(2))
+				expect(26.71).to eq(p.valor_porcion[1].round(2))
+			end
+			it "Existe un metodo para obtener la etiqueta formateada" do 
+				p.formateado	
 			end	
 		end
 	end
