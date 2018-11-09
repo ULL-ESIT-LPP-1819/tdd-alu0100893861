@@ -41,7 +41,7 @@ RSpec.describe Gema do
 				expect(26.71).to eq(p.valor_porcion[1].round(2))
 			end
 			it "Existe un metodo para obtener la etiqueta formateada" do 
-				p.formateado	
+				p.to_s
 			end	
 		end
 	end
