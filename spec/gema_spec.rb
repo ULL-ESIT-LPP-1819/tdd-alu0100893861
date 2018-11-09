@@ -44,5 +44,25 @@ RSpec.describe Gema do
 				p.to_s
 			end	
 		end
+		context "Añadiendo valores de sustancias opcionales"do
+			it "Añadiendo las grasas monoinsaturadas"do 
+				expect(2.2).to eq(p.monoinsaturadas)
+			end
+			it "Añadiendo las grasas poliinsaturadas"do
+                                expect(2.9).to eq(p.poliinsaturadas)
+                        end
+			it "Añadiendo la fibra alimentaria"do
+				expect(2.1).to eq(p.fibra_alimentaria)
+                        end
+			it "Añadiendo los azucares polialcoholes"do
+                                expect(12).to eq(p.polialcoholes)
+                        end
+			it "Añadiendo loss azucares almidon"do
+                                expect(12).to eq(p.almidon)
+                        end
+			it "Añadiendo las vitaminas y minerales "do
+				expect(0.3).to eq(p.vit_min)
+                        end
+		end
 	end
 end
