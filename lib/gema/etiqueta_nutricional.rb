@@ -1,6 +1,6 @@
 class Etiqueta
-	attr_reader :nombre, :grasa,:saturadas, :hidratos, :proteinas, :azucares, :sal, :valor_energetico, :porcion,:valor_porcion
-	def initialize(nombre,grasa,saturadas, hidratos, proteinas,azucares, sal,porcion)
+	attr_reader :nombre, :grasa,:saturadas, :hidratos, :proteinas, :azucares, :sal, :valor_energetico, :porcion,:valor_porcion, :monoinsaturadas, :poliinsaturadas, :fibra_alimentaria, :polialcoholes, :almidon, :vit_min
+	def initialize(nombre,grasa,saturadas, hidratos, proteinas,azucares, sal,porcion, monoinsaturadas,poliinsaturadas,fibra_alimentaria,polialcoholes,almidon,vit_min)
 		@nombre=nombre
 		@grasa=grasa
 		@saturadas=saturadas
@@ -8,11 +8,12 @@ class Etiqueta
 		@proteinas=proteinas
 		@azucares=azucares
 		@sal=sal
-		#@fibra_alimentaria=fibra_alimentaria
-		#@monoinsaturados=monoinsaturados
-		#@polialcoholes=polialcoholes
-		#@almidon=almidon
-		#@vit_min=vit_min
+		@fibra_alimentaria=fibra_alimentaria
+		@monoinsaturadas=monoinsaturadas
+		@poliinsaturadas=poliinsaturadas
+		@polialcoholes=polialcoholes
+		@almidon=almidon
+		@vit_min=vit_min
 		@valor_energetico=[v_energeticokJ,v_energeticokc]
 		@porcion=porcion/100
 		@valor_porcion=[porcion_kJ,porcion_kc]
@@ -32,20 +33,20 @@ class Etiqueta
 	end
 	def to_s
 		puts "#{@nombre}		Por 100g de producto |   IR por 100g | Por porcion de #{@porcion*100}g  | IR por porcion de #{@porcion*100} producto" 
-		puts "Valor energetico: #{@valor_energetico[0].round(2)}kJ/#{@valor_energetico[1].round(2)}kc  |  #{(@valor_energetico[0]/@IR[0]).round(2)*100}%/#{(@valor_energetico[1]/@IR[0]).round(2)*100}%	| #{@valor_porcion[0].round(2)}kJ/#{@valor_porcion[1].round(2)}kc	|  #{((@valor_energetico[0]/@IR[0])*@porcion).round(2)*100}%/#{((@valor_energetico[1]/@IR[0])*@porcion).round(2)*100}%"
+		puts "Valor energetico: #{@valor_energetico[0].round(2)}kJ/#{@valor_energetico[1].round(2)}kc |  #{(@valor_energetico[0]/@IR[0]).round(2)*100}%/#{(@valor_energetico[1]/@IR[0]).round(2)*100}%	| #{@valor_porcion[0].round(2)}kJ/#{@valor_porcion[1].round(2)}kc	|  #{((@valor_energetico[0]/@IR[0])*@porcion).round(2)*100}%/#{((@valor_energetico[1]/@IR[0])*@porcion).round(2)*100}%"
 		puts "Grasa:			#{@grasa}	     |	#{(@grasa/@IR[2]).round(2)*100}%		|	#{(@grasa*@porcion).round(2)}	|	#{((@grasa*@porcion)*100/@IR[2]).round(2)}%" 
 		puts "de las"
-		puts "cuales saturadas:	#{@saturadas}        |  #{(@saturadas/@IR[3]).round(2)*100}%            |       #{(@saturadas*@porcion).round(2)}   |       #{((@saturadas*@porcion)*100/@IR[3]).round(2)}%"
-		puts "monoinsaturadas:"		
-		puts "poliinsaturadas:"
-		puts"Hidratos de carbono 	#{@hidratos}        |  #{(@hidratos/@IR[4]).round(2)*100}%              |       #{(@hidratos*@porcion).round(2)}   |       #{((@hidratos*@porcion)*100/@IR[4]).round(2)}%"
-		puts "los cuales Azucares:	#{@azucares}        |  #{(@azucares/@IR[6]).round(2)*100}%              |       #{(@azucares*@porcion).round(2)}   |       #{((@azucares*@porcion)*100/@IR[6]).round(2)}%"
-		puts "Polialcoholes:"
-		puts "Almidón:"
-		puts "Fibra alimentaria:"
-		puts "Proteínas: 		#{@proteinas}        |  #{(@proteinas/@IR[5]).round(2)*100}%              |       #{(@proteinas*@porcion).round(2)}   |       #{((@proteinas*@porcion)*100/@IR[5]).round(2)}%"
-		puts "Sal:			#{@sal}        |  #{(@sal/@IR[7]).round(2)*100}%              |       #{(@sal*@porcion).round(2)}   |       #{((@sal*@porcion)*100/@IR[7]).round(2)}%"
-		puts "Vitaminas/minerales:"
+		puts "cuales saturadas:	#{@saturadas}          |  #{(@saturadas/@IR[3]).round(2)*100}%           |       #{(@saturadas*@porcion).round(2)}   |       #{((@saturadas*@porcion)*100/@IR[3]).round(2)}%"
+		puts "monoinsaturadas:	#{@monoinsaturadas}          |  ------          |       #{(@monoinsaturadas*@porcion).round(2)}   |       ---------"
+		puts "poliinsaturadas:	#{@poliinsaturadas}          |  -------         |       #{(@poliinsaturadas*@porcion).round(2)}   |       --------"
+		puts"Hidratos de carbono 	#{@hidratos}           |  #{(@hidratos/@IR[4]).round(2)*100}%              |       #{(@hidratos*@porcion).round(2)}    |       #{((@hidratos*@porcion)*100/@IR[4]).round(2)}%"
+		puts "los cuales Azucares:	#{@azucares}           |  #{(@azucares/@IR[6]).round(2)*100}%              |       #{(@azucares*@porcion).round(2)}   |       #{((@azucares*@porcion)*100/@IR[6]).round(2)}%"
+		puts "Polialcoholes:		#{@polialcoholes}           |  ------          |       #{(@polialcoholes*@porcion).round(2)}   |       ------"
+		puts "Almidón:		#{@almidon}           |  ------          |       #{(@almidon*@porcion).round(2)}   |       ----"	
+		puts "Fibra alimentaria:	#{@fibra_alimentaria}          |  ----            |       #{(@fibra_alimentaria*@porcion).round(2)}   |       ----"
+		puts "Proteínas: 		#{@proteinas}          |  #{(@proteinas/@IR[5]).round(2)*100}%           |       #{(@proteinas*@porcion).round(2)}   |       #{((@proteinas*@porcion)*100/@IR[5]).round(2)}%"
+		puts "Sal:			#{@sal}         |  #{(@sal/@IR[7]).round(2)*100}% |       #{(@sal*@porcion).round(2)}   |       #{((@sal*@porcion)*100/@IR[7]).round(2)}%"
+		puts "Vitaminas/minerales: 	#{@vit_min}          |  ---              |       #{(@sal*@porcion).round(2)}   |       ---"
 	end
 end
 
