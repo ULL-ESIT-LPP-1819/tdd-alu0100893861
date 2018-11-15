@@ -80,6 +80,12 @@ RSpec.describe Gema do
 			it "existe el metodo empty" do
 				expect(@p.empty?).to eq(true)
 			end
+			it "existe el metodo insertar" do
+				@p.insert(1)
+				@p.insert(2)
+				expect(@p.head.value).to eq(1)
+				expect(@p.tail.value).to eq(2)
+			end
 		end
 		context "pruebas del struct" do
 			it "existen el nodo" do
