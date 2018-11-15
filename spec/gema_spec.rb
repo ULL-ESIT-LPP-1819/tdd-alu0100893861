@@ -77,6 +77,9 @@ RSpec.describe Gema do
 				expect(@p.head).to eq(nil)
 				expect(@p.tail).to eq(nil)
 			end
+			it "existe el metodo empty" do
+				expect(@p.empty?).to eq(true)
+			end
 		end
 		context "pruebas del struct" do
 			it "existen el nodo" do

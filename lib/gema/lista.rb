@@ -6,4 +6,8 @@ class Lista
 		@head=nil
 		@tail=nil
 	end
+	def empty?
+		@head==nil
+		@head==nil
+	end
 end
