@@ -77,7 +77,11 @@ RSpec.describe Gema do
 				expect(@p.head).to eq(nil)
 				expect(@p.tail).to eq(nil)
 			end
-
+		end
+		context "pruebas del struct" do
+			it "existen el nodo" do
+				n= Node.new
+			end
 		end
 	end
 end
