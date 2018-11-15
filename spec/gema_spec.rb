@@ -86,6 +86,12 @@ RSpec.describe Gema do
 				expect(@p.head.value).to eq(1)
 				expect(@p.tail.value).to eq(2)
 			end
+			it "existe un metodo para extraer por la cola y por la cabeza" do
+				@p.insert(1)
+				@p.insert(2)
+				expect(@p.get_head.value).to eq(2)
+				expect(@p.get_tail.value).to eq(1)
+			end
 		end
 		context "pruebas del struct" do
 			it "existen el nodo" do

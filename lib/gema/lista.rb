@@ -21,5 +21,16 @@ class Lista
                         @tail = nodo 
                 end 
         end
+	def get_head
+       	 	aux = @head
+        	@head = @head.next
+        	aux
+    	end
+
+    	def get_tail
+        	aux = @tail
+       		@tail = @tail.prev
+      	 	aux
+   	 end
                  
 end 
