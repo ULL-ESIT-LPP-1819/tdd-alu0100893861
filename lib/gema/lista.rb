@@ -1,7 +1,7 @@
 class Lista
-	#attr_reader :head, :tail
+	attr_reader :head, :tail
 	def initialize
-		#@head
-		#@tail
+		@head=nil
+		@tail=nil
 	end
 end
