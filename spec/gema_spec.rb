@@ -65,4 +65,19 @@ RSpec.describe Gema do
                         end
 		end
 	end
+	describe Lista do 
+		before :each do
+			@p=Lista.new
+		end
+		context "Pruebas de la clase Lista" do
+			it "existe la clase lista" do
+				l=Lista.new
+			end
+			it "Se almacenan el head y el tail" do
+				expect(@p.head).to eq(nil)
+				expect(@p.tail).to eq(nil)
+			end
+
+		end
+	end
 end
