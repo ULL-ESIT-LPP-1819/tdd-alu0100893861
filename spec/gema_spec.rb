@@ -129,12 +129,12 @@ RSpec.describe Gema do
 				while(aux!=nil)
 					if(aux.value.gt_6?)
 						mayor_6[j]=aux.value.nombre
-						puts "mayores de 6:#{mayor_6[j]}"
+					
 						aux=aux.next
 						
 					else
 						menor_6[j]=aux.value.nombre
-						puts "menores de 6:#{menor_6[j]}"
+					
 						aux=aux.next
 						
 					end
