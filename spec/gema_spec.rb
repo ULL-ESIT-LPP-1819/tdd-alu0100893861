@@ -66,8 +66,10 @@ RSpec.describe Gema do
 		end
 	end
 	describe Lista do 
-		before :each do
+		valor=0
+		before :all do
 			@p=Lista.new
+			node=Node.new(1,nil,nil)
 		end
 		context "Pruebas de la clase Lista" do
 			it "existe la clase lista" do
@@ -82,14 +84,14 @@ RSpec.describe Gema do
 			end
 			it "existe el metodo insertar" do
 				@p.insert(1)
-				@p.insert(2)
 				expect(@p.head.value).to eq(1)
-				expect(@p.tail.value).to eq(2)
+				expect(@p.tail.value).to eq(1)
 			end
 			it "existe un metodo para extraer por la cola y por la cabeza" do
 				@p.insert(1)
-				@p.insert(2)
-				expect(@p.get_head.value).to eq(2)
+				expect(@p.get_head.value).to eq(1)
+				expect(@p.get_tail.value).to eq(1)
+				expect(@p.get_head.value).to eq(1)
 				expect(@p.get_tail.value).to eq(1)
 			end
 		end
@@ -97,6 +99,25 @@ RSpec.describe Gema do
 			it "existen el nodo" do
 				n= Node.new
 			end
+		end
+	
+		context "pruebas de clasificacion de sal" do
+			before :all do
+      				@lista = Lista.new
+				@etiqueta1 = Etiqueta.new("galletas",1,1,1,1,2,1,1,1,1,1,1,1,1)
+				@etiqueta2 = Etiqueta.new("galletas",1,1,1,1,8,8,1,1,1,1,1,1,1)
+				@etiqueta3 = Etiqueta.new("galletas",1,1,1,1,6,1,1,1,1,1,1,1,1)
+				@etiqueta4 = Etiqueta.new("galletas",1,1,1,1,7,1,1,1,1,1,1,1,1)
+				@etiqueta5 = Etiqueta.new("galletas",1,1,1,1,3,1,1,1,1,1,1,1,1)
+      				@lista.insert(@etiqueta1)
+      				@lista.insert(@etiqueta2)
+      				@lista.insert(@etiqueta3)
+      				@lista.insert(@etiqueta4)
+      				@lista.insert(@etiqueta5)
+			end
+			it "metodo que devuelva si la sal es mayor o menor que 6" do
+				expect(@etiqueta2.gt_6?).to eq(true)
+			end	
 		end
 	end
 end
