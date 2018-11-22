@@ -174,7 +174,7 @@ RSpec.describe Gema do
 				expect(@humano1.is_a? Paciente).to eq(true)
 			end
 			it "comprobando el tipo del objeto " do
-				expect(@humano1).to respond_to(:persna)
+				expect(@humano1).to respond_to(:persona)
 				expect(@humano2).to respond_to(:talla)
 		 		expect(@humano3).to respond_to(:imc)		
 			end
