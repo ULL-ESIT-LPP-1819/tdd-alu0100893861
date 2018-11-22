@@ -152,4 +152,12 @@ RSpec.describe Gema do
 		end
 					
 	end
+	describe Individuo do
+		context "Pruebas de la clase persona" do
+			it "Existe la clase persona" do
+				A = Individuo.new
+				expect(A.class.to_s).to eq("Individuo")
+			end
+		end
+	end
 end
