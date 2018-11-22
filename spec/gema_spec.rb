@@ -196,7 +196,7 @@ RSpec.describe Gema do
 				aux= @lista.head
 				while(aux!=nil)
 					if(aux.value.tabla_imc.to_s=="Delgado")
-						expect(aux.value.tabla_imc.to_s).to eq("Dgado")
+						expect(aux.value.tabla_imc.to_s).to eq("Delgado")
 						puts "El paciente #{aux.value.persona.to_s} está DELGADO"
 						aux=aux.next
 					elsif(aux.value.tabla_imc.to_s=="Adecuado/Aceptable")
