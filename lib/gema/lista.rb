@@ -32,6 +32,8 @@ class Lista
        		@tail = @tail.prev
       	 	aux
    	 end
-                 
+	def sort
+    	
+	end	
 end 
 

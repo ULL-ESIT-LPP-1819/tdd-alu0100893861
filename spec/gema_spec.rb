@@ -153,10 +153,74 @@ RSpec.describe Gema do
 					
 	end
 	describe Individuo do
+		 before :all do
+                                @lista = Lista.new
+				@humano1 = Paciente.new("jaime",40,1.6,[0.80,0.82],[0.9,0.91])
+                                @humano2 = Paciente.new("carlos",80,1.5,[0.80,0.82],[0.9,0.91])
+				@humano3 = Paciente.new("jime",57,1.9,[0.80,0.82],[0.9,0.91])
+				@humano4 = Paciente.new("je",57,1.8,[0.80,0.82],[0.9,0.91])
+				@humano5 = Paciente.new("jae",67,1.7,[0.80,0.82],[0.9,0.91])
+				@lista.insert(@humano1)
+                                @lista.insert(@humano2)
+                                @lista.insert(@humano3)
+                                @lista.insert(@humano4)
+                                @lista.insert(@humano5)
+		end
 		context "Pruebas de la clase persona" do
-			it "Existe la clase persona" do
-				A = Individuo.new
-				expect(A.class.to_s).to eq("Individuo")
+			it "comprobando la clase de un objeto" do
+				@a = Individuo.new("jaime")
+				@b  = Paciente.new("jaime",50,1.7,[0.80,0.81],[0.9,0.9])
+				expect(@a.class.to_s).to eq("Individo")
+				expect(@humano1.is_a? Paciente).to eq(true)
+			end
+			it "comprobando el tipo del objeto " do
+				expect(@humano1).to respond_to(:persona)
+				expect(@humano2).to respond_to(:talla)
+		 		expect(@humano3).to respond_to(:imc)		
+			end
+			it "Un punto es un punto"do 
+				expect(@humano1).to be_a_kind_of(Object)
+			end
+			it "comprobando jerarquía" do
+				A = Individuo.new("jaime")
+				B = Paciente.new("jaime",57,1.7,[0.80,0.81],[0.90,0.91])
+				expect(Paciente.superclass.to_s).to eq("Individuo")
+				expect(@humano1.is_a? Object).to eq(true)
+				expect(@humano1.is_a? BasicObject).to eq(true)
+				expect(@humano1.is_a? Individuo).to eq(true)
+				expect(@humano1.is_a? Paciente).to eq(true)
+			end
+		end
+		context "Pruebas para clasificar los 5 individuos" do
+			it "clasificacion segun imc"do
+				aux= @lista.head
+				while(aux!=nil)
+					if(aux.value.tabla_imc.to_s=="Delgado")
+						expect(aux.value.tabla_imc.to_s).to eq("Dgado")
+						puts "El paciente #{aux.value.persona.to_s} está DELGADO"
+						aux=aux.next
+					elsif(aux.value.tabla_imc.to_s=="Adecuado/Aceptable")
+						expect(aux.value.tabla_imc.to_s).to eq("Adecuado/Aceptable")
+						puts "El paciente #{aux.value.persona.to_s} está DELGADO"
+						aux=aux.next
+					elsif(aux.value.tabla_imc.to_s=="Sobrepeso")
+					       expect(aux.value.tabla_imc.to_s).to eq("Sobrepeso")
+					       puts "El paciente #{aux.value.persona.to_s} tiene Sobrepeso"
+				       		aux=aux.next
+				 	elsif(aux.value.tabla_imc.to_s=="Obesidad grado 1")
+						expect(aux.value.tabla_imc.to_s).to eq("Obesidad grado 1")
+						puts "El paciente #{aux.value.persona.to_s} tiene Obesidad grado 1"
+						aux=aux.next
+					elsif(aux.value.tabla_imc.to_s=="Obesidad grado 2")
+						expect(aux.value.tabla_imc.to_s).to eq("Obesidad grado 2")
+						puts "El paciente #{aux.value.persona.to_s} tiene Obesidad grado 2"
+						aux=aux.next
+					elsif(aux.value.tabla_imc.to_s=="Obesidad grado 3")
+						expect(aux.value.tabla_imc.to_s).to eq("Obesidad grado 3")
+						puts "El paciente #{aux.value.persona.to_s} tiene Obesidad grado 3"
+						aux=aux.next
+					end
+				end
 			end
 		end
 	end
