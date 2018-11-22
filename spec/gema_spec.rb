@@ -170,11 +170,11 @@ RSpec.describe Gema do
 			it "comprobando la clase de un objeto" do
 				@a = Individuo.new("jaime")
 				@b  = Paciente.new("jaime",50,1.7,[0.80,0.81],[0.9,0.9])
-				expect(@a.class.to_s).to eq("Individo")
+				expect(@a.class.to_s).to eq("Individuo")
 				expect(@humano1.is_a? Paciente).to eq(true)
 			end
 			it "comprobando el tipo del objeto " do
-				expect(@humano1).to respond_to(:persona)
+				expect(@humano1).to respond_to(:persna)
 				expect(@humano2).to respond_to(:talla)
 		 		expect(@humano3).to respond_to(:imc)		
 			end
