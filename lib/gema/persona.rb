@@ -1,20 +1,18 @@
 class Individuo
-	attr_reader :persona
-	def initialize(persona)
+	attr_reader :persona, :peso, :talla
+	def initialize(persona,peso,talla)
 		@persona=persona
+		@peso=peso
+		@talla=talla
 	end
 	def to_s
-		"#{@persona}"
+		"#{@persona} #{@peso} #{@talla}"
 	end
 end
 class Paciente < Individuo 
-	attr_reader :peso, :talla, :cintura, :cadera
-	def initialize(persona, peso, talla, cintura, cadera)
-		super(persona)
-		@peso=peso
-		@talla=talla
-		@cintura=cintura
-		@cadera=cadera
+	attr_reader 
+	def initialize(persona,peso,talla)
+		super(persona,peso,talla)
 	end
 	def imc
 		@peso / (@talla * @talla)
@@ -36,7 +34,7 @@ class Paciente < Individuo
 		end
 	end
 	def to_s
-		"#{@persona} #{@peso} #{@talla} #{@cintura} #{@cadera}"
+		super.to_s
 	end
 end
 

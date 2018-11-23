@@ -155,11 +155,11 @@ RSpec.describe Gema do
 	describe Individuo do
 		 before :all do
                                 @lista = Lista.new
-				@humano1 = Paciente.new("jaime",40,1.6,[0.80,0.82],[0.9,0.91])
-                                @humano2 = Paciente.new("carlos",80,1.5,[0.80,0.82],[0.9,0.91])
-				@humano3 = Paciente.new("jime",57,1.9,[0.80,0.82],[0.9,0.91])
-				@humano4 = Paciente.new("je",57,1.8,[0.80,0.82],[0.9,0.91])
-				@humano5 = Paciente.new("jae",67,1.7,[0.80,0.82],[0.9,0.91])
+				@humano1 = Paciente.new("jaime",40,1.6)
+                                @humano2 = Paciente.new("carlos",80,1.5)
+				@humano3 = Paciente.new("maria",70,1.9)
+				@humano4 = Paciente.new("alberto",57,1.8)
+				@humano5 = Paciente.new("juan",140,1.7)
 				@lista.insert(@humano1)
                                 @lista.insert(@humano2)
                                 @lista.insert(@humano3)
@@ -168,8 +168,7 @@ RSpec.describe Gema do
 		end
 		context "Pruebas de la clase persona" do
 			it "comprobando la clase de un objeto" do
-				@a = Individuo.new("jaime")
-				@b  = Paciente.new("jaime",50,1.7,[0.80,0.81],[0.9,0.9])
+				@a = Individuo.new("jaime",57,1.7)
 				expect(@a.class.to_s).to eq("Individuo")
 				expect(@humano1.is_a? Paciente).to eq(true)
 			end
@@ -182,8 +181,6 @@ RSpec.describe Gema do
 				expect(@humano1).to be_a_kind_of(Object)
 			end
 			it "comprobando jerarquía" do
-				A = Individuo.new("jaime")
-				B = Paciente.new("jaime",57,1.7,[0.80,0.81],[0.90,0.91])
 				expect(Paciente.superclass.to_s).to eq("Individuo")
 				expect(@humano1.is_a? Object).to eq(true)
 				expect(@humano1.is_a? BasicObject).to eq(true)
