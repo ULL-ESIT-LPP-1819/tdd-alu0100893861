@@ -64,7 +64,29 @@ RSpec.describe Gema do
 				expect(0.3).to eq(p.vit_min)
                         end
 		end
-	end
+	context "Comparar la clase Valor Energético" do
+    		before :all do
+      		@galletas =  Etiqueta.new("galleta",10.5,5.10,77,7.6,24,0.83,6.1,2.2,2.9,2.1,12,12,0.3)
+		@pan = Etiqueta.new("pan",31.6,11.0,57.6,56.8,6.0,0.11,25.0,8,9,10,12,13,0.4)
+		@arroz = Etiqueta.new("arroz",31.6,11.0,57.6,56.8,6.0,0.11,25.0,8,9,10,16,3,0.2)
+    		end
+ 		 it " pan > galletas " do
+    			expect(@pan > @galletas).to eq(true)
+  		end
+  		it " galletas < pan" do
+    			expect(@galletas < @pan).to eq(true)
+  		end
+  		it " pan  == pan " do
+    			expect(@pan == @pan).to eq(true)
+  		end
+  		it " galletas <= pan " do
+    			expect(@galletas <= @pan).to eq(true)
+  		end
+  		it "arroz >= pan" do
+    			expect(@arroz >= @pan).to eq(true)
+ 		end
+ 	 end
+end
 	describe Lista do 
 		valor=0
 		before :all do

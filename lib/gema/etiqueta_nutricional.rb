@@ -40,7 +40,7 @@ class Etiqueta
 		end
 	end
 	def <=>(other)
-		return nil unless other.instance_of?ValorEnergetico
+		return nil unless other.instance_of?Etiqueta
        		@valor_energetico <=> other.valor_energetico
    	end
 	def to_s
