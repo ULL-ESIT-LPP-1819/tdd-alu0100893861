@@ -1,4 +1,5 @@
 class Etiqueta
+	include Comparable
 	attr_reader :nombre, :grasa,:saturadas, :hidratos, :proteinas, :azucares, :sal, :valor_energetico, :porcion,:valor_porcion, :monoinsaturadas, :poliinsaturadas, :fibra_alimentaria, :polialcoholes, :almidon, :vit_min
 	def initialize(nombre,grasa,saturadas, hidratos, proteinas,azucares, sal,porcion, monoinsaturadas,poliinsaturadas,fibra_alimentaria,polialcoholes,almidon,vit_min)
 		@nombre=nombre
@@ -37,7 +38,11 @@ class Etiqueta
 		else
 	   		false
 		end
-	end		
+	end
+	def <=>(other)
+		return nil unless other.instance_of?ValorEnergetico
+       		@valor_energetico <=> other.valor_energetico
+   	end
 	def to_s
 		puts "#{@nombre}		Por 100g de producto |   IR por 100g | Por porcion de #{@porcion*100}g  | IR por porcion de #{@porcion*100} producto" 
 		puts "Valor energetico: #{@valor_energetico[0].round(2)}kJ/#{@valor_energetico[1].round(2)}kc |  #{(@valor_energetico[0]/@IR[0]).round(2)*100}%/#{(@valor_energetico[1]/@IR[0]).round(2)*100}%	| #{@valor_porcion[0].round(2)}kJ/#{@valor_porcion[1].round(2)}kc	|  #{((@valor_energetico[0]/@IR[0])*@porcion).round(2)*100}%/#{((@valor_energetico[1]/@IR[0])*@porcion).round(2)*100}%"

@@ -221,26 +221,26 @@ RSpec.describe Gema do
 			end
 		end
 	context "Haciendo la clase Individuo Comparable" do
-   			 before :all do
-     			@persona1 = Individuo.new("Jose","Rodriguez")
-      			@persona2 = Individuo.new("Francisco","Hernandez")
-     			@persona3 = Individuo.new("Maria","Pilar")
-   			 end
-		it "# Jose < Francisco" do
-      			expect(@persona1<@persona2).to eq(false)
+   		before :all do
+     			@persona1 = Individuo.new("Jame",10,10)
+      			@persona2 = Individuo.new("Antonio",60,80)
+     			@persona3 = Individuo.new("Ma",30,50)
+   		end
+		it " Jame < Antonio" do
+      			expect(@persona1>@persona2).to eq(true)
     		end
-    		it "# Pilar > Jose" do
-      			expect(@persona3>@persona1).to eq(true)
+    		it " Maria > Jame" do
+			expect(@persona3 > @persona1).to eq(true)
     		end
-    		it "# Francisco == Francisco" do
+    		it "Antonio  == Antonio" do
       			expect(@persona2 == @persona2).to eq(true)
     		end
-    		it "# Jose <= Pilar" do
-      			expect(@persona1<=@persona3).to eq(true)
-    		end
-   		it "# Francisco >= Pilar" do
-      			expect(@persona2>=@persona3).to eq(false)
-   		 end
-  	end
+    		it "Jame <= Maria" do
+      			expect(@persona1 <= @persona3).to eq(true)
+		end
+   		it "Antonio >= Maria" do
+      			expect(@persona2 >= @persona3).to eq(false)
+   		end
+  		end
 	end
 end

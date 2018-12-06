@@ -1,6 +1,7 @@
 #create a struct with :value, :next and :prev
 Node = Struct.new(:value, :next, :prev)
 class Lista
+	include Enumerable
         attr_reader :head, :tail
         def initialize
                 @head=nil
@@ -34,6 +35,13 @@ class Lista
    	 end
 	def sort
     	
-	end	
+	end
+	def each 
+       		it = @head
+       		while it !=nil 
+            		yield it.value
+            	it=it.next
+       		end
+    	end	
 end 
 

@@ -1,4 +1,5 @@
 class Individuo
+	include Comparable
 	attr_reader :persona, :peso, :talla
 	def initialize(persona,peso,talla)
 		@persona=persona
@@ -8,6 +9,10 @@ class Individuo
 	def to_s
 		"#{@persona} #{@peso} #{@talla}"
 	end
+	def <=>(other)
+       		return nil unless other.instance_of?Individuo
+       		@persona <=> other.persona
+    	end
 end
 class Paciente < Individuo 
 	attr_reader 
