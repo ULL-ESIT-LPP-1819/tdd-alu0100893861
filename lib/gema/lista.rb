@@ -32,15 +32,19 @@ class Lista
         	aux = @tail
        		@tail = @tail.prev
       	 	aux
-   	 end
-	def sort
-    	
-	end
+   	end
+	def to_s
+      		 it = @head
+      		 while it!=nil
+          	puts it.value.to_s
+         	 it=it.next
+      		 end
+    	end
 	def each 
        		it = @head
-       		while it !=nil 
+       		while it != nil 
             		yield it.value
-            	it=it.next
+            		it=it.next
        		end
     	end	
 end 

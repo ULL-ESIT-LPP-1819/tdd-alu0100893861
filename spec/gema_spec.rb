@@ -124,22 +124,17 @@ end
 		end
 	
 		context "pruebas de clasificacion de sal" do
-			before :all do
-      				@lista = Lista.new
+			before :each do
+      				@lista = Lista.new()
 				@etiqueta1 = Etiqueta.new("galletas",1,1,1,1,2,1,1,1,1,1,1,1,1)
-				@etiqueta2 = Etiqueta.new("galles",1,1,1,1,8,8,1,1,1,1,1,1,1)
-				@etiqueta3 = Etiqueta.new("gals",1,1,1,1,6,1,1,1,1,1,1,1,1)
-				@etiqueta4 = Etiqueta.new("ga",1,1,1,1,7,1,1,1,1,1,1,1,1)
-				@etiqueta5 = Etiqueta.new("gggg",1,1,1,1,3,1,1,1,1,1,1,1,1)
-      				@lista.insert(@etiqueta1)
-      				@lista.insert(@etiqueta2)
-      				@lista.insert(@etiqueta3)
-      				@lista.insert(@etiqueta4)
-      				@lista.insert(@etiqueta5)
+				@etiqueta2 = Etiqueta.new("arroz",1,1,1,1,2,1,1,1,1,1,1,1,1)
+				@etiqueta3 = Etiqueta.new("pan",1,1,1,1,2,1,1,1,1,1,1,1,1)
+				@etiqueta4 = Etiqueta.new("chocolate",1,1,1,1,2,1,1,1,1,1,1,1,1)
+				@etiqueta5 = Etiqueta.new("carne",1,1,1,1,2,1,1,1,1,1,1,1,1)
 			end
 			it "metodo que devuelva si la sal es mayor o menor que 6" do
 				aux=@lista.head
-				expect(@etiqueta2.gt_6?).to eq(true)
+				expect(@etiqueta2.gt_6?).to eq(false)
 				
 
 			end	
@@ -171,9 +166,38 @@ end
                                 puts menor_6[i]
                                 end
 			end	
-		end
-					
-	end
+		it "Comprobando el metodo del collect" do
+			@lista.insert(@etiqueta1)
+                                @lista.insert(@etiqueta2)
+                                @lista.insert(@etiqueta3)
+				expect(@lista.collect{|i| i.to_s}).to eq(["galletas","arroz","pan"])
+     		end
+     		it "Comprobando el metodo select" do
+      			@lista.insert(@etiqueta1)
+                                @lista.insert(@etiqueta2)
+                                @lista.insert(@etiqueta3)
+			expect(@lista.select{|i| i.nombre.size < 5}).to eq([@etiqueta3])
+     		end
+     		it "comprobando el metodo max " do
+       			@lista.insert(@etiqueta1)
+                                @lista.insert(@etiqueta2)
+                                @lista.insert(@etiqueta3)
+				expect(@lista.max).to eq(@etiqueta1)
+     		end
+     		it "Comprobando el metodo min" do
+       			@lista.insert(@etiqueta1)
+                                @lista.insert(@etiqueta2)
+                                @lista.insert(@etiqueta3)
+			expect(@lista.min).to eq(@etiqueta2)
+     		end
+     		it "Comprobando el metodo sort" do
+       			@lista.insert(@etiqueta1)
+                                @lista.insert(@etiqueta2)
+                                @lista.insert(@etiqueta3)
+			expect(@lista.sort{ |a,b| b<=>a}).to eq([@etiqueta1,@etiqueta3,@etiqueta2])
+     		end
+	end	
+end
 	describe Individuo do
 		 before :all do
                                 @lista = Lista.new
