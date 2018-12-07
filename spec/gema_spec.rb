@@ -257,9 +257,9 @@ end
 	context "Haciendo la clase Individuo Comparable" do
    		before :each do
 			@lista2 = Lista.new()
-     			@persona1 = Individuo.new("Jame",10,10)
+     			@persona1 = Individuo.new("Jaime",10,10)
       			@persona2 = Individuo.new("Antonio",60,80)
-     			@persona3 = Individuo.new("Ma",30,50)
+     			@persona3 = Individuo.new("Mar",30,50)
 			@lista2.insert(@persona1)
 			@lista2.insert(@persona2)
 			@lista2.insert(@persona3)
@@ -267,23 +267,23 @@ end
 		it " Jame < Antonio" do
       			expect(@persona1<@persona2).to eq(true)
     		end
-    		it " Maria > Jame" do
+    		it " Mar > Jame" do
 			expect(@persona3 > @persona1).to eq(true)
     		end
     		it "Antonio  == Antonio" do
       			expect(@persona2 == @persona2).to eq(true)
     		end
-    		it "Jame <= Maria" do
+    		it "Jame <= Mar" do
       			expect(@persona1 <= @persona3).to eq(true)
 		end
-   		it "Antonio >= Maria" do
+   		it "Antonio >= Mar" do
       			expect(@persona2 >= @persona3).to eq(true)
    		end
 		it "Probando el metodo collect"do
-			expect(@lista2.collect{ |i| i.to_s}).to eq(["Jame 10 10","Antonio 60 80","Ma 30 50"])
+			expect(@lista2.collect{ |i| i.to_s}).to eq(["Jaime 10 10","Antonio 60 80","Mar 30 50"])
 		end
 		it "Probando el metodo select"do 
-			expect(@lista2.select{|i| i.persona.size > 3}).to eq([@persona1,@persona2])
+			expect(@lista2.select{|i| i.persona.size > 4}).to eq([@persona1,@persona2])
   		end
 		it "probando el min"do
 			expect(@lista2.min).to eq(@persona1)
