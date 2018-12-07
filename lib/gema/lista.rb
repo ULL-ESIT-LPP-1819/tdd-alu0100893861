@@ -33,13 +33,6 @@ class Lista
        		@tail = @tail.prev
       	 	aux
    	end
-	def to_s
-      		 it = @head
-      		 while it!=nil
-          	puts it.value.to_s
-         	 it=it.next
-      		 end
-    	end
 	def each 
        		it = @head
        		while it != nil 

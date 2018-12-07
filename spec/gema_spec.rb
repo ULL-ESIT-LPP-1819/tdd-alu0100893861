@@ -127,10 +127,13 @@ end
 			before :each do
       				@lista = Lista.new()
 				@etiqueta1 = Etiqueta.new("galletas",1,1,1,1,2,1,1,1,1,1,1,1,1)
-				@etiqueta2 = Etiqueta.new("arroz",1,1,1,1,2,1,1,1,1,1,1,1,1)
-				@etiqueta3 = Etiqueta.new("pan",1,1,1,1,2,1,1,1,1,1,1,1,1)
-				@etiqueta4 = Etiqueta.new("chocolate",1,1,1,1,2,1,1,1,1,1,1,1,1)
-				@etiqueta5 = Etiqueta.new("carne",1,1,1,1,2,1,1,1,1,1,1,1,1)
+				@etiqueta2 = Etiqueta.new("arroz",1,1,1,2,2,1,1,1,1,1,1,1,1)
+				@etiqueta3 = Etiqueta.new("pan",1,1,1,3,2,1,1,1,1,1,1,1,1)
+				@etiqueta4 = Etiqueta.new("chocolate",1,1,1,4,2,1,1,1,1,1,1,1,1)
+				@etiqueta5 = Etiqueta.new("carne",1,1,1,5,2,1,1,1,1,1,1,1,1)
+				@lista.insert(@etiqueta1)
+				@lista.insert(@etiqueta2)
+				@lista.insert(@etiqueta3)
 			end
 			it "metodo que devuelva si la sal es mayor o menor que 6" do
 				aux=@lista.head
@@ -167,34 +170,19 @@ end
                                 end
 			end	
 		it "Comprobando el metodo del collect" do
-			@lista.insert(@etiqueta1)
-                                @lista.insert(@etiqueta2)
-                                @lista.insert(@etiqueta3)
-				expect(@lista.collect{|i| i.to_s}).to eq(["galletas","arroz","pan"])
+				expect(@lista.collect{|i| i.to_s}).to eq(["1","2","3"])
      		end
      		it "Comprobando el metodo select" do
-      			@lista.insert(@etiqueta1)
-                                @lista.insert(@etiqueta2)
-                                @lista.insert(@etiqueta3)
-			expect(@lista.select{|i| i.nombre.size < 5}).to eq([@etiqueta3])
+			expect(@lista.select{|i| i.nombre.size < 4}).to eq([@etiqueta3])
      		end
      		it "comprobando el metodo max " do
-       			@lista.insert(@etiqueta1)
-                                @lista.insert(@etiqueta2)
-                                @lista.insert(@etiqueta3)
-				expect(@lista.max).to eq(@etiqueta1)
+				expect(@lista.max).to eq(@etiqueta3)
      		end
      		it "Comprobando el metodo min" do
-       			@lista.insert(@etiqueta1)
-                                @lista.insert(@etiqueta2)
-                                @lista.insert(@etiqueta3)
-			expect(@lista.min).to eq(@etiqueta2)
+			expect(@lista.min).to eq(@etiqueta1)
      		end
      		it "Comprobando el metodo sort" do
-       			@lista.insert(@etiqueta1)
-                                @lista.insert(@etiqueta2)
-                                @lista.insert(@etiqueta3)
-			expect(@lista.sort{ |a,b| b<=>a}).to eq([@etiqueta1,@etiqueta3,@etiqueta2])
+			expect(@lista.sort{ |a,b| b<=>a}).to eq([@etiqueta3,@etiqueta2,@etiqueta1])
      		end
 	end	
 end
@@ -267,13 +255,17 @@ end
 			end
 		end
 	context "Haciendo la clase Individuo Comparable" do
-   		before :all do
+   		before :each do
+			@lista2 = Lista.new()
      			@persona1 = Individuo.new("Jame",10,10)
       			@persona2 = Individuo.new("Antonio",60,80)
      			@persona3 = Individuo.new("Ma",30,50)
+			@lista2.insert(@persona1)
+			@lista2.insert(@persona2)
+			@lista2.insert(@persona3)
    		end
 		it " Jame < Antonio" do
-      			expect(@persona1>@persona2).to eq(true)
+      			expect(@persona1<@persona2).to eq(true)
     		end
     		it " Maria > Jame" do
 			expect(@persona3 > @persona1).to eq(true)
@@ -285,8 +277,23 @@ end
       			expect(@persona1 <= @persona3).to eq(true)
 		end
    		it "Antonio >= Maria" do
-      			expect(@persona2 >= @persona3).to eq(false)
+      			expect(@persona2 >= @persona3).to eq(true)
    		end
+		it "Probando el metodo collect"do
+			expect(@lista2.collect{ |i| i.to_s}).to eq(["Jame 10 10","Antonio 60 80","Ma 30 50"])
+		end
+		it "Probando el metodo select"do 
+			expect(@lista2.select{|i| i.persona.size > 3}).to eq([@persona1,@persona2])
   		end
+		it "probando el min"do
+			expect(@lista2.min).to eq(@persona1)
+		end
+		it "probando el max"do
+			expect(@lista2.max).to eq(@persona2)
+		end
+		it "probando el sort"do
+			expect(@lista2.sort).to eq([@persona1,@persona3,@persona2])
+		end
+	end
 	end
 end

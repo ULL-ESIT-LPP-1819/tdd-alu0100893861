@@ -11,7 +11,7 @@ class Individuo
 	end
 	def <=>(other)
        		return nil unless other.instance_of?Individuo
-       		@persona <=> other.persona
+       		@peso <=> other.peso
     	end
 end
 class Paciente < Individuo 
