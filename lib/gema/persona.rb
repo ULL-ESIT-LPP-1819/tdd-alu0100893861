@@ -15,9 +15,11 @@ class Individuo
     	end
 end
 class Paciente < Individuo 
-	attr_reader 
-	def initialize(persona,peso,talla)
+	attr_reader :sexo, :edad
+	def initialize(persona,peso,talla,sexo,edad)
 		super(persona,peso,talla)
+		@sexo=sexo
+		@edad=edad
 	end
 	def imc
 		@peso / (@talla * @talla)
@@ -39,7 +41,34 @@ class Paciente < Individuo
 		end
 	end
 	def to_s
-		super.to_s
+		super.to_s "#{@edad}, #{@sexo}"
 	end
+	def teorico
+		(talla-150)*0.75+50
+	end
+	def gasto_basal
+		return ((10*@peso)+(6.25*@talla)-(5*@edad)+5).round(2) if @sexo == 1
+        	((10*@peso)+(6.25*@talla)-(5*@edad) - 161).round(2)
+	end
+	def efecto
+		 (gasto_basal * 0.10).round(2)
+	end
+	def actividad_fisica(actividad)
+       		 return 0.0 if actividad == "Reposo"
+      		 return 0.12 if actividad == "Ligera"
+      		 return 0.27 if actividad == "Moderada"
+      		 return 0.54 if actividad == "Intensa"
+    	end
+	def gasto_act_fisica(actividad)
+
+       		(actividad_fisica(actividad) * gasto_basal).round(2)
+
+    	end
+
+    def gasto_total(actividad)
+
+        (gasto_basal + efecto + actividad_fisica(actividad)).round(2)
+
+    end
 end
 
