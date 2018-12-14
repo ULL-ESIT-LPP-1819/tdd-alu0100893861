@@ -189,11 +189,11 @@ end
 	describe Individuo do
 		 before :all do
                                 @lista = Lista.new
-				@humano1 = Paciente.new("jaime",40,1.6)
-                                @humano2 = Paciente.new("carlos",80,1.5)
-				@humano3 = Paciente.new("maria",70,1.9)
-				@humano4 = Paciente.new("alberto",57,1.8)
-				@humano5 = Paciente.new("juan",140,1.7)
+				@humano1 = Paciente.new("jaime",40,1.6,1,23)
+                                @humano2 = Paciente.new("carlos",80,1.5,1,23)
+				@humano3 = Paciente.new("maria",70,1.9,2,24)
+				@humano4 = Paciente.new("alberto",57,1.8,1,25)
+				@humano5 = Paciente.new("juan",140,1.7,1,25)
 				@lista.insert(@humano1)
                                 @lista.insert(@humano2)
                                 @lista.insert(@humano3)
@@ -295,5 +295,41 @@ end
 			expect(@lista2.sort).to eq([@persona1,@persona3,@persona2])
 		end
 	end
+	end
+	describe Paciente do
+		 before :each do
+                           @paciente1 =  Paciente.new("Juan",70,185,1,25)
+                           @etiqueta1 = Etiqueta.new("galletas",1,1,1,1,2,1,1,1,1,1,1,1,1)
+                           @etiqueta2 = Etiqueta.new("arroz",1,1,1,2,2,1,1,1,1,1,1,1,1)
+                           @etiqueta3 = Etiqueta.new("pan",1,1,1,3,2,1,1,1,1,1,1,1,1)
+                           @etiqueta4 = Etiqueta.new("chocolate",1,1,1,4,2,1,1,1,1,1,1,1,1)
+                           @etiqueta5 = Etiqueta.new("carne",1,1,1,5,2,1,1,1,1,1,1,1,1)
+                        @menu1 = [@etiqueta1,@etiqueta2,@etiqueta3]
+                        @menu2 = [@etiqueta1,@etiqueta2,@etiquetamenu4]
+                        @menu3 = [@etiqueta1,@etiqueta4,@etiqueta5]
+                        @menu4 = [@etiqueta2,@etiqueta3,@etiqueta4]
+                        @menu5 = [@etiqueta3,@etiqueta1,@etiqueta5]
+                        @gasto_paciente1 = @paciente1.gasto_total("Moderada")
+		end
+		context "Comprobando metodos" do
+			it "Existe el metodo del calculo del peso ideal"do
+				expect(@paciente1.teorico).to eq(76.25)
+			end
+			it "Existe el metodo del calculo gastrico energetico basal"do
+				expect(@paciente1.gasto_basal).to eq(1736.25)
+			end
+			it "Existe el metodo para calcular el efecto termogeno"do
+				expect(@paciente1.efecto).to eq(173.63)
+			end
+			it "Existe el metodo para calcular el factor de actividad fisica"do
+				expect(@paciente1.actividad_fisica("Reposo")).to eq(0.0)
+			end
+			it "Existe el metodo para calcular el gasto de actividad fisica"do
+				expect(@paciente1.gasto_act_fisica("Ligera")).to eq(208.35)
+			end
+			it "Existe el metodo para calcular el gasto de energia total "do
+				expect(@paciente1.gasto_total("Moderada")).to eq(1910.15)
+			end
+		end
 	end
 end
