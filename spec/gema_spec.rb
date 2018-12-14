@@ -331,5 +331,10 @@ end
 				expect(@paciente1.gasto_total("Moderada")).to eq(1910.15)
 			end
 		end
+		context "Realizando pruebas del menu"do
+				it "Prueba para el menu 1" do 
+					expect(@menu1.collect{|i| i.v_energeticokJ}.reduce(:+)).to be < @gasto_paciente1
+    				end
+		end
 	end
 end
