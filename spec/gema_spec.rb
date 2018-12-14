@@ -305,7 +305,7 @@ end
                            @etiqueta4 = Etiqueta.new("chocolate",1,1,1,4,2,1,1,1,1,1,1,1,1)
                            @etiqueta5 = Etiqueta.new("carne",1,1,1,5,2,1,1,1,1,1,1,1,1)
                         @menu1 = [@etiqueta1,@etiqueta2,@etiqueta3]
-                        @menu2 = [@etiqueta1,@etiqueta2,@etiquetamenu4]
+                        @menu2 = [@etiqueta1,@etiqueta2,@etiqueta4]
                         @menu3 = [@etiqueta1,@etiqueta4,@etiqueta5]
                         @menu4 = [@etiqueta2,@etiqueta3,@etiqueta4]
                         @menu5 = [@etiqueta3,@etiqueta1,@etiqueta5]
@@ -335,6 +335,16 @@ end
 				it "Prueba para el menu 1" do 
 					expect(@menu1.collect{|i| i.v_energeticokJ}.reduce(:+)).to be < @gasto_paciente1
     				end
+				it "Prueba menu 2"do
+					expect(@menu2.collect{|x| x.v_energeticokJ}.inject{|sum,n| sum + n}).to be < @gasto_paciente1
+				end
+				it "Prueba menu 3" do
+					expect(@menu3.collect{|x| x.v_energeticokJ}.reduce(:+)).to be < @paciente1.gasto_total("Intensa")
+				end
+				it "Prueba menu 4" do
+					expect(@menu4.collect{|x| x.v_energeticokJ}.inject{|sum,n| sum + n}).to be < @paciente1.gasto_total("Moderada")
+				end
+
 		end
 	end
 end
