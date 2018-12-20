@@ -299,17 +299,43 @@ end
 	describe Paciente do
 		 before :each do
                            @paciente1 =  Paciente.new("Juan",70,185,1,25)
-                           @etiqueta1 = Etiqueta.new("galletas",1,1,1,1,2,1,1,1,1,1,1,1,1)
+			   @paciente2 = Paciente.new("Maria",60,160,2,23)
+			   @paciente3 =  Paciente.new("Jaime",70,185,1,25)
+			   @paciente4 =  Paciente.new("Javi",70,185,1,25)
+			   @paciente5 =  Paciente.new("alberto",90,185,1,25)
+			   @paciente6 =  Paciente.new("ari",80,185,2,25)
+			   @paciente7 =  Paciente.new("susana",70,185,2,25)
+			   @paciente8 =  Paciente.new("cris",40,185,2,25)
+			   @paciente9 =  Paciente.new("joan",30,185,1,25)
+			   @paciente10 =  Paciente.new("pedro",70,185,1,25)
+			   @etiqueta1 = Etiqueta.new("galletas",1,1,1,1,2,1,1,1,1,1,1,1,1)
                            @etiqueta2 = Etiqueta.new("arroz",1,1,1,2,2,1,1,1,1,1,1,1,1)
                            @etiqueta3 = Etiqueta.new("pan",1,1,1,3,2,1,1,1,1,1,1,1,1)
                            @etiqueta4 = Etiqueta.new("chocolate",1,1,1,4,2,1,1,1,1,1,1,1,1)
                            @etiqueta5 = Etiqueta.new("carne",1,1,1,5,2,1,1,1,1,1,1,1,1)
                         @menu1 = [@etiqueta1,@etiqueta2,@etiqueta3]
                         @menu2 = [@etiqueta1,@etiqueta2,@etiqueta4]
-                        @menu3 = [@etiqueta1,@etiqueta4,@etiqueta5]
+                        @menu3 = [@etiqueta1,@etiqueta2,@etiqueta5]
                         @menu4 = [@etiqueta2,@etiqueta3,@etiqueta4]
-                        @menu5 = [@etiqueta3,@etiqueta1,@etiqueta5]
-                        @gasto_paciente1 = @paciente1.gasto_total("Moderada")
+                        @menu5 = [@etiqueta1,@etiqueta3,@etiqueta5]
+			@menu6 = [@etiqueta1,@etiqueta3,@etiqueta4]
+			@menu7 = [@etiqueta2, @etiqueta3,@etiqueta5]
+	     		@menu8 = [@etiqueta2, @etiqueta4, @etiqueta5]
+			@menu9 = [@etiqueta1, @etiqueta4, @etiqueta5]
+			@menu10= [@etiqueta3, @etiqueta4, @etiqueta5]
+			@array_menu = [@menu1, @menu2, @menu3, @menu4, @menu5, @menu6, @menu7, @menu8, @menu9, @menu10]
+			@list = Lista.new
+			@list.insert(@paciente1)
+			@list.insert(@paciente2)
+			@list.insert(@paciente3)
+			@list.insert(@paciente4)
+			@list.insert(@paciente5)
+			@list.insert(@paciente6)
+			@list.insert(@paciente7)
+			@list.insert(@paciente8)
+			@list.insert(@paciente9)
+			@list.insert(@paciente10)
+                        
 		end
 		context "Comprobando metodos" do
 			it "Existe el metodo del calculo del peso ideal"do
@@ -333,10 +359,10 @@ end
 		end
 		context "Realizando pruebas del menu"do
 				it "Prueba para el menu 1" do 
-					expect(@menu1.collect{|i| i.v_energeticokJ}.reduce(:+)).to be < @gasto_paciente1
+					expect(@menu1.collect{|i| i.v_energeticokJ}.reduce(:+)).to be < @paciente1.gasto_total("Ligera")
     				end
 				it "Prueba menu 2"do
-					expect(@menu2.collect{|x| x.v_energeticokJ}.inject{|sum,n| sum + n}).to be < @gasto_paciente1
+					expect(@menu2.collect{|x| x.v_energeticokJ}.inject{|sum,n| sum + n}).to be < @paciente1.gasto_total("Moderada")
 				end
 				it "Prueba menu 3" do
 					expect(@menu3.collect{|x| x.v_energeticokJ}.reduce(:+)).to be < @paciente1.gasto_total("Intensa")
