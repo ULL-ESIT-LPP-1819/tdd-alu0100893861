@@ -368,9 +368,37 @@ end
 					expect(@menu3.collect{|x| x.v_energeticokJ}.reduce(:+)).to be < @paciente1.gasto_total("Intensa")
 				end
 				it "Prueba menu 4" do
-					expect(@menu4.collect{|x| x.v_energeticokJ}.inject{|sum,n| sum + n}).to be < @paciente1.gasto_total("Moderada")
+					expect(@array_menu[1].collect{|x| x.v_energeticokJ}.inject{|sum,n| sum + n}).to be < @paciente1.gasto_total("Moderada")
 				end
 
 		end
+		context "Pruebas del menu" do
+			it "Pruebas del bucle for para valoraciones nutricionales" do
+				
+				array = Array.new
+				array = [@menu1] 
+				#@x = [@menu1,@menu2,@menu3,@menu4]
+				for i in 0..(@array_menu.length-1) do 
+					currentMin = i	
+					for j in (i+1)..(@array_menu.length-1) do 
+						if @array_menu[j].collect{|y| y.v_energeticokJ}.reduce(:+)  < @array_menu[currentMin].collect{|y| y.v_energeticokJ}.reduce(:+) 
+							currentMin = j
+						end
+					end
+						@tmp = @array_menu[currentMin]
+						array.insert(currentMin,@array_menu[i])
+						array.insert(i, @tmp)
+						
+						
+				end
+			#puts array
+			end
+		end
+			it "Pruebas del each" do
+
+			end
+			it "Pruebas del sort" do
+
+			end
+		end
 	end
-end
