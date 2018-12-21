@@ -393,12 +393,48 @@ end
 				end
 			#puts array
 			end
-		end
-			it "Pruebas del each" do
+				it "pruebas de lista para ordenar con Each" do 
+					@arr = Array.new
+					@arr = [@paciente1]
+             				 @gasto = 0.0
+              				(0..9).each do |i|
+                				@nodo = @list.get_head.value
+                				@gasto = @nodo.gasto_total("Ligera")
+					(0..(@arr.length-1)).each do |j|
+						if @gasto < @arr[j].gasto_total("Ligera")
+                    					@arr.insert(j,@nodo)
+                    					break
+                  				end
+                  			if j ==(@arr.length-1)
+						@arr.insert(j,@nodo)
+                  			end
+                			end
+             				end
+                                end
+			end
+		
+			it "Pruebas del each con valores nutricionales" do
+				array3 = Array.new
+                                array3 = [@menu1]
+				(0..(@array_menu.length-1)).each do |i|
+                                        currentMin = i
+					((i+1)..(@array_menu.length-1)).each do |j|
+                                                if @array_menu[j].collect{|y| y.v_energeticokJ}.reduce(:+)  < @array_menu[currentMin].collect{|y| y.v_energeticokJ}.reduce(:+)
+                                                        currentMin = j
+                                                end
+                                        end
+                                                @tmp = @array_menu[currentMin]
+                                                array3.insert(currentMin,@array_menu[i])
+                                                array3.insert(i, @tmp)
+                                end
 
 			end
-			it "Pruebas del sort" do
-
+			it "Pruebas del sort para valores nutricionales" do
+				 @arraysort = @array_menu.sort!{ |x,y| x.collect{|i| i.v_energeticokJ}.reduce(:+) <=> y.collect{|i| i.v_energeticokJ}.reduce(:+)}
 			end
+			it "Prueba del sort para gsto energetico" do
+				 @resultado = @list.sort{|x,y| x.gasto_total("Ligera") <=> y.gasto_total("Ligera")}
+			end
+
 		end
 	end
