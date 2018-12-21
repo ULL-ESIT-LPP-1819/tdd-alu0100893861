@@ -393,6 +393,29 @@ end
 				end
 			#puts array
 			end
+				it "Pruebas de la lista con el bucle for" do
+					@arr = Array.new
+					@arr = [@paciente1]
+
+					for i in 0..9 do
+                                        	@nodo = @list.get_head.value
+						@valor = @nodo.gasto_total("Ligera")
+						currentMin = i
+                                        for j in (i+1)..(@arr.length-1) do
+						if @valor < @arr[j].gasto_total("Ligera")
+							@arr.insert(j,@nodo)
+							currentMin = j
+						break
+                                                end
+                                        end
+					if j ==(@arr.length-1)
+                                                @arr.insert(j,@nodo)
+                                        end
+
+
+                                end
+
+				end
 				it "pruebas de lista para ordenar con Each" do 
 					@arr = Array.new
 					@arr = [@paciente1]
@@ -411,11 +434,10 @@ end
                 			end
              				end
                                 end
-			end
 		
 			it "Pruebas del each con valores nutricionales" do
-				array3 = Array.new
-                                array3 = [@menu1]
+				@arr = Array.new
+                                @arr = [@menu1]
 				(0..(@array_menu.length-1)).each do |i|
                                         currentMin = i
 					((i+1)..(@array_menu.length-1)).each do |j|
@@ -424,17 +446,17 @@ end
                                                 end
                                         end
                                                 @tmp = @array_menu[currentMin]
-                                                array3.insert(currentMin,@array_menu[i])
-                                                array3.insert(i, @tmp)
+                                                @arr.insert(currentMin,@array_menu[i])
+                                                @arr.insert(i, @tmp)
                                 end
 
 			end
 			it "Pruebas del sort para valores nutricionales" do
-				 @arraysort = @array_menu.sort!{ |x,y| x.collect{|i| i.v_energeticokJ}.reduce(:+) <=> y.collect{|i| i.v_energeticokJ}.reduce(:+)}
+				 @arr = @array_menu.sort!{ |x,y| x.collect{|i| i.v_energeticokJ}.reduce(:+) <=> y.collect{|i| i.v_energeticokJ}.reduce(:+)}
 			end
 			it "Prueba del sort para gsto energetico" do
-				 @resultado = @list.sort{|x,y| x.gasto_total("Ligera") <=> y.gasto_total("Ligera")}
+				 @arr = @list.sort{|x,y| x.gasto_total("Ligera") <=> y.gasto_total("Ligera")}
 			end
-
+		end
 		end
 	end
