@@ -374,7 +374,9 @@ end
 		end
 		context "Pruebas del menu" do
 			it "Pruebas del bucle for para valoraciones nutricionales" do
-				
+				Benchmark.bm do |x|
+
+					x.report{	
 				array = Array.new
 				array = [@menu1] 
 				#@x = [@menu1,@menu2,@menu3,@menu4]
@@ -388,12 +390,17 @@ end
 						@tmp = @array_menu[currentMin]
 						array.insert(currentMin,@array_menu[i])
 						array.insert(i, @tmp)
-						
+				end
+					}end
 						
 				end
 			#puts array
-			end
+		
 				it "Pruebas de la lista con el bucle for" do
+				
+					Benchmark.bm do |x|
+
+						x.report{
 					@arr = Array.new
 					@arr = [@paciente1]
 
@@ -411,12 +418,15 @@ end
 					if j ==(@arr.length-1)
                                                 @arr.insert(j,@nodo)
                                         end
+					
 
-
-                                end
-
+                                	end
+					}end
 				end
 				it "pruebas de lista para ordenar con Each" do 
+					Benchmark.bm do |x|
+
+						x.report{
 					@arr = Array.new
 					@arr = [@paciente1]
              				 @gasto = 0.0
@@ -433,9 +443,12 @@ end
                   			end
                 			end
              				end
+						}end
                                 end
 		
 			it "Pruebas del each con valores nutricionales" do
+				Benchmark.bm do |x|
+					x.report{
 				@arr = Array.new
                                 @arr = [@menu1]
 				(0..(@array_menu.length-1)).each do |i|
@@ -449,13 +462,20 @@ end
                                                 @arr.insert(currentMin,@array_menu[i])
                                                 @arr.insert(i, @tmp)
                                 end
+					}end
 
 			end
 			it "Pruebas del sort para valores nutricionales" do
-				 @arr = @array_menu.sort!{ |x,y| x.collect{|i| i.v_energeticokJ}.reduce(:+) <=> y.collect{|i| i.v_energeticokJ}.reduce(:+)}
+				Benchmark.bm do |x|
+					x.report{	
+			       	@arr = @array_menu.sort!{ |x,y| x.collect{|i| i.v_energeticokJ}.reduce(:+) <=> y.collect{|i| i.v_energeticokJ}.reduce(:+)}
+				}end
 			end
 			it "Prueba del sort para gsto energetico" do
-				 @arr = @list.sort{|x,y| x.gasto_total("Ligera") <=> y.gasto_total("Ligera")}
+				Benchmark.bm do |x|
+					x.report{	
+			       	@arr = @list.sort{|x,y| x.gasto_total("Ligera") <=> y.gasto_total("Ligera")}
+					}end
 			end
 		end
 		end
