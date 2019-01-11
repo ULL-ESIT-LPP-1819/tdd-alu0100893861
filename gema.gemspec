@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["alu0100893861"]
   spec.email         = ["alu0100893861@ull.edu.es"]
 
-  spec.summary       = %q{Nada}
-  spec.description   = %q{Gema prc06}
+  spec.summary       = %q{"Nada"}
+  spec.description   = %q{"Gema prc06"}
   spec.homepage      = "https://github.com/ULL-ESIT-LPP-1819/tdd-alu0100893861.git"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
