@@ -4,9 +4,9 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "gema/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "alu0100893861"
+  spec.name          = "alu0100893861menu"
   spec.version       = Gema::VERSION
-  spec.authors       = ["Jaime Rodriguez"]
+  spec.authors       = ["alu0100893861"]
   spec.email         = ["alu0100893861@ull.edu.es"]
 
   spec.summary       = %q{Nada}

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    alu0100893861 (0.1.1)
+    alu0100893861menu (0.1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -98,7 +98,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  alu0100893861!
+  alu0100893861menu!
   bundler (~> 1.16)
   coveralls
   guard
