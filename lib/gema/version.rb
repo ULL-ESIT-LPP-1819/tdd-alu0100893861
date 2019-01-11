@@ -1,5 +1,5 @@
 require "gema/etiqueta_nutricional.rb"
 require "gema/lista.rb"
 module Gema
-	VERSION = "0.1.4"
+	VERSION = "0.1.5"
 end
